@@ -17983,6 +17983,7 @@ function evaluateMultiPropertyBoundHelper(context, fn, normalizedProperties, opt
       property = normalizePath(context, boundOptions[boundOption], data);
       bindView.path = property.path;
       bindView.pathRoot = property.root;
+      bindView.type = "ID";
       hash[boundOption] = Ember._SimpleHandlebarsView.prototype.normalizedValue.call(bindView);
     }
 
