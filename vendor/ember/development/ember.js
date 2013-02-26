@@ -17990,6 +17990,7 @@ function evaluateMultiPropertyBoundHelper(context, fn, normalizedProperties, opt
       property = normalizedProperties[loc];
       bindView.path = property.path;
       bindView.pathRoot = property.root;
+      bindView.type = options.types[loc];
       args.push(Ember._SimpleHandlebarsView.prototype.normalizedValue.call(bindView));
     }
     args.push(options);
@@ -18278,7 +18279,12 @@ SimpleHandlebarsView.prototype = {
   normalizedValue: function() {
     var path = this.path,
         pathRoot = this.pathRoot,
+        type = this.type,
         result, templateData;
+
+    if (type == "STRING") {
+      return path;
+    }
 
     // Use the pathRoot as the result if no path is provided. This
     // happens if the path is `this`, which gets normalized into
