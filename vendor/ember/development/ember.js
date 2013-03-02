@@ -18048,7 +18048,7 @@ function evaluateUnboundHelper(context, fn, normalizedProperties, options) {
 
   for(loc = 0, len = normalizedProperties.length; loc < len; ++loc) {
     property = normalizedProperties[loc];
-    type     = options.types[loc];
+    type     = options.types[loc + (options.types.length - normalizedProperties.length)];
     
     args.push(type == "ID" ? Ember.Handlebars.get(property.root, property.path, options) : property.path);
   }
